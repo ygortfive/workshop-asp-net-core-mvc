@@ -29,14 +29,14 @@ namespace SalesWebMVC.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction();
             }
 
             var department = await _context.Department
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (department == null)
             {
-                return NotFound();
+                return RedirectToAction();
             }
 
             return View(department);
@@ -69,13 +69,13 @@ namespace SalesWebMVC.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction();
             }
 
             var department = await _context.Department.FindAsync(id);
             if (department == null)
             {
-                return NotFound();
+                return RedirectToAction();
             }
             return View(department);
         }
@@ -89,7 +89,7 @@ namespace SalesWebMVC.Controllers
         {
             if (id != department.Id)
             {
-                return NotFound();
+                return RedirectToAction();
             }
 
             if (ModelState.IsValid)
@@ -103,7 +103,7 @@ namespace SalesWebMVC.Controllers
                 {
                     if (!DepartmentExists(department.Id))
                     {
-                        return NotFound();
+                        return RedirectToAction();
                     }
                     else
                     {
@@ -120,14 +120,14 @@ namespace SalesWebMVC.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction();
             }
 
             var department = await _context.Department
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (department == null)
             {
-                return NotFound();
+                return RedirectToAction();
             }
 
             return View(department);
